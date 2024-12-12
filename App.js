@@ -1,14 +1,13 @@
-import {createAppContainer} from 'react-navigation'
-import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import IndexScreen from './src/screens/indexScreen';
 
-
-const navigation = createStackNavigator(
+const navigator = createStackNavigator(
   {
-Index: IndexScreen
+    Index: IndexScreen
   },
   {
-    initialRouteName: 'Index', // Corrected the typo here
+    initialRouteName: 'Index',
     defaultNavigationOptions: {
       title: 'Blogs'
     }
