@@ -1,9 +1,7 @@
-import React, {useReducer} from "react";
-
-const BlogContext =React.createContext();
+import createDataContext  from "./createDataContext";
 
 // used reducer here:::::::
-const blogPostReducer = ( state, action) =>
+const blogReducer = ( state, action) =>
 {
 switch(action.type)
 {
@@ -14,19 +12,18 @@ switch(action.type)
 }
 };
 
-export const BlogProvider =  ({ children })  => {
+const addBlogPost = (dispatch) =>{
 
-   const [blogPost, dispatch] = useReducer(blogPostReducer, []);
-
-
-const addBlogPost = () =>
+return () =>
 {
-dispatch({type: 'add_blogpost' });
+    dispatch({type: 'add_blogpost'});
+};
 };
 
-    return (
-    <BlogContext.Provider value={{data: blogPost, addBlogPost}}>{ children}</BlogContext.Provider>
-    );
-};
 
-export default BlogContext;
+export const {Context, Provider} = 
+createDataContext(
+    blogReducer, 
+    {addBlogPost}, 
+    []
+ )
