@@ -4,11 +4,12 @@ import { Context} from "../context/BlogContex";
 import Feather from '@expo/vector-icons/Feather';
 
 
-const IndexScreen = ()  =>{
-
+const IndexScreen = ({navigation})  =>{
 const {state, addBlogPost, deleteBlogPost} = useContext(Context);
 
-return (<View>
+return (
+<TouchableOpacity onPress={() => navigation.navigate('Show', {id: item.id})} >
+<View>
 <Button title="Add Post" onPress={() => addBlogPost()} />
 <FlatList
 data={state}
@@ -22,7 +23,9 @@ renderItem={({item}) =>{
     </View>
 }}
 />
-</View>);
+</View>
+</TouchableOpacity>
+);
 };
 
 const styles = StyleSheet.create({
