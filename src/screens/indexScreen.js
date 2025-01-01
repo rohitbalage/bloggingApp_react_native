@@ -15,12 +15,15 @@ return (
 data={state}
 keyExtractor={blogPost => blogPost.title}
 renderItem={({item}) =>{
-    return <View style={styles.row}>
+    return (
+    <TouchableOpacity onPress={() => navigation.navigate('Show')}>
+    <View style={styles.row}>
         <Text style={styles.title}>{item.title} - {item.id} </Text> 
    <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
     <Feather style={styles.icon} name="trash"/>
     </TouchableOpacity>
     </View>
+    </TouchableOpacity>)
 }}
 />
 </View>
